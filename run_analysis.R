@@ -1,4 +1,5 @@
 setwd(dir="/users/will/Desktop")
+library(dplyr)
 sjtest <- read.table("subject_test.txt")
 xtest <- read.table("X_test.txt")
 ytest <- read.table("y_test.txt")
@@ -19,3 +20,19 @@ df_merge[,2] <- gsub(3, "Walking Downstairs",df_merge[,2])
 df_merge[,2] <- gsub(4, "Sitting",df_merge[,2])
 df_merge[,2] <- gsub(5, "Standing", df_merge[,2])
 df_merge[,2] <- gsub(6, "Laying", df_merge[,2])
+
+#calculate each variable's mean grouped by subject and activity
+
+#group by subject
+avgbysj <- as.data.frame(matrix(0, 30, 79))
+for (i in 1:79){
+  v <- df_merge %>% group_by(subject) %>% summarize(mean(df_merge[,(i+2)]))
+  avgbysj[,i] <- v[,2]
+}
+
+#group by activity
+avgbyaty <- as.data.frame(matrix(0,6,79))
+for (i in 1:79){
+  v <- df_merge %>% group_by(activity) %>% summarize(mean(df_merge[,(i+2)]))
+  avgbyaty[,i] <- v[,2]
+}
