@@ -30,6 +30,7 @@ for (i in 1:79){
   as.data.frame(t)
   avgbysj[,i] <- t
 }
+colnames(avgbysj)<-colnames(df_merge)[3:81]
 
 #group by activity
 avgbyaty <- as.data.frame(matrix(0,6,79))
@@ -37,3 +38,4 @@ for (i in 1:79){
   t<-tapply(df_merge[,i+2], df_merge$activity, FUN = mean)
   avgbyaty[,i] <- t
 }
+colnames(avgbyaty)<-colnames(df_merge)[3:81]
