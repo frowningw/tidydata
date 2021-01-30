@@ -20,7 +20,7 @@ df_merge[,2] <- gsub(3, "Walking Downstairs",df_merge[,2])
 df_merge[,2] <- gsub(4, "Sitting",df_merge[,2])
 df_merge[,2] <- gsub(5, "Standing", df_merge[,2])
 df_merge[,2] <- gsub(6, "Laying", df_merge[,2])
-write.table("df-merge.txt")
+write.table(df_merge, "/users/will/Desktop/tidydata/df_merge.txt", )
 
 #calculate each variable's mean grouped by subject and activity
 
@@ -32,7 +32,7 @@ for (i in 1:79){
   avgbysj[,i] <- t
 }
 colnames(avgbysj)<-colnames(df_merge)[3:81]
-write.table("avg_by_subject.txt")
+write.table(avgbysj,"/users/will/Desktop/tidydata/avg_by_subject.txt")
 
 #group by activity
 avgbyaty <- as.data.frame(matrix(0,6,79))
@@ -41,4 +41,4 @@ for (i in 1:79){
   avgbyaty[,i] <- t
 }
 colnames(avgbyaty)<-colnames(df_merge)[3:81]
-write.table("avg_by_activity.txt")
+write.table(avgbyaty, "/users/will/Desktop/tidydata/avg_by_activity.txt")
