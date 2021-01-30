@@ -31,6 +31,7 @@ for (i in 1:79){
   avgbysj[,i] <- t
 }
 colnames(avgbysj)<-colnames(df_merge)[3:81]
+write.table("avg_by_subject.txt")
 
 #group by activity
 avgbyaty <- as.data.frame(matrix(0,6,79))
@@ -39,3 +40,4 @@ for (i in 1:79){
   avgbyaty[,i] <- t
 }
 colnames(avgbyaty)<-colnames(df_merge)[3:81]
+write.table("avg_by_activity.txt")
