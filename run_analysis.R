@@ -20,6 +20,7 @@ df_merge[,2] <- gsub(3, "Walking Downstairs",df_merge[,2])
 df_merge[,2] <- gsub(4, "Sitting",df_merge[,2])
 df_merge[,2] <- gsub(5, "Standing", df_merge[,2])
 df_merge[,2] <- gsub(6, "Laying", df_merge[,2])
+write.table("df-merge.txt")
 
 #calculate each variable's mean grouped by subject and activity
 
