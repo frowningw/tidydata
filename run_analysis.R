@@ -26,13 +26,14 @@ df_merge[,2] <- gsub(6, "Laying", df_merge[,2])
 #group by subject
 avgbysj <- as.data.frame(matrix(0, 30, 79))
 for (i in 1:79){
-  v <- df_merge %>% group_by(subject) %>% summarize(mean(df_merge[,(i+2)]))
-  avgbysj[,i] <- v[,2]
+  t<-tapply(df_merge[,i+2], df_merge$subject, FUN = mean)
+  as.data.frame(t)
+  avgbysj[,i] <- t
 }
 
 #group by activity
 avgbyaty <- as.data.frame(matrix(0,6,79))
 for (i in 1:79){
-  v <- df_merge %>% group_by(activity) %>% summarize(mean(df_merge[,(i+2)]))
-  avgbyaty[,i] <- v[,2]
+  t<-tapply(df_merge[,i+2], df_merge$activity, FUN = mean)
+  avgbyaty[,i] <- t
 }
