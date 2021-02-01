@@ -41,4 +41,6 @@ for (i in 1:79){
   avgbyaty[,i] <- t
 }
 colnames(avgbyaty)<-colnames(df_merge)[3:81]
+rownames(avgbyaty) <- c("Laying", "Sitting", "Standing",
+                        "Walking", "Walking Downstairs", "Walking Upstairs")
 write.table(avgbyaty, "/users/will/Desktop/tidydata/avg_by_activity.txt")
